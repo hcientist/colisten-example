@@ -9,7 +9,9 @@
  */
 angular.module('colistenExampleApp')
   .controller('MainCtrl', function ($scope) {
+    
     $scope.x =3;
+
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

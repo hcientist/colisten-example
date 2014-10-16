@@ -15,8 +15,18 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'btford.socket-io'
   ])
+  .factory('colistenSocket', function (socketFactory) {
+    var myIoSocket = io.connect('/');
+
+    var colistenSocket = socketFactory({
+      ioSocket: myIoSocket
+    });
+
+    return colistenSocket;
+  })
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -25,7 +35,7 @@ angular
       })
       .when('/michael', {
         templateUrl: 'views/michael.html',
-        controller: 'MainCtrl'
+        controller: 'CommunicationCtrl'
       })
       .otherwise({
         redirectTo: '/'
